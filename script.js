@@ -47,3 +47,22 @@ let newNum = num;
 newNum++;
 console.log(newNum);
 console.log(num);
+
+/*
+  참조형자료는 변수에 값을 옮겨담으면 얕은 복사 처리됨 (Shallow Copy)
+*/
+//자바스크립트에서 let, const 형식으로 만든 변수의 메모리 공간은 callstack에 생성됨
+//실제 callstack의 arr라는 변수에는 배열이 위치하고 있는 힙메모리상의 위치값(참조값) 이 담겨있음
+const arr = [1, 2, 3];
+//arr변수 자체에는 메모리힙상의 위치값만 들어가 있기 떄문에
+//아래 경우는 해당 힙메모리상의 값을 바꾼것뿐 callstack에 위치해있는 arr에 담겨있는 참조값이 바뀐것이 아님
+//const방식으로 지정했다고 하더라도 callstack상의 값이 바뀐것이 아니기 때문에 변경가능
+arr[0] = 0;
+console.log(arr);
+//미션 - 위와 같은 개념으로 arr라는배열에 아예 새로운 ['red','green','blue']라는 배열을 담으면 에러가 나는 이유 고민
+
+//원시형 자료는 물리적으로 값도 callstack에 담겨있는 형태이기 때문에
+//const 방식으로 생성한 변수에 새로 값을 재할당시 에러발생
+const text = "hello";
+// text = "abc";
+// console.log(text);
