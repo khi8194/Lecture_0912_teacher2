@@ -12,7 +12,7 @@
   : 원본이 있어야지 원본대비 변경할 내용을 인지가능하기 때문
 
 
-  forEach는 직업 DOM제어해야 되는 작업환경에서 주로 쓰임
+  forEach는 직접 DOM제어해야 되는 작업환경에서 주로 쓰임
   map: 실제 돔이 아닌 가상돔이라는 순수배열을 다뤄야 되는 리액트에서 주로 쓰임
 */
 
@@ -22,7 +22,28 @@ const lis = document.querySelectorAll("ul li");
 console.log(lis); //Node List (Static DOM : 해당 요소를 선택한 시점으로 값이 고정)
 
 //유사배열 (NodeList, HTMLCollection도 반복처리 가능)
-lis.forEach((data) => console.log(data));
+lis.forEach((data) => data);
 
-//순수 배열 반복처리 가능 (DOM반복 불가능)
-lis.map((data) => console.log(data));
+//원본 배열 생성
+const even = [2, 4, 6];
+
+//원본 배열을 새로운 변수인 newEven1에 담아서 복사
+const newEven1 = even;
+
+//복사가된 newEven1이라는 배열의 첫번째 값을 수정
+newEven1[0] = 0;
+
+//복사된 배열의 첫번째 값아 변경됨
+console.log(newEven1); // [0,4,6]
+
+//수정하지않은 원본 배열 확인
+//수정하지 않았음에도 원본도 같이 수정됨 (원본 데이터 훼손)
+console.log(even); // [0,4,6]
+
+//위와 똑같은 방법으로 이번엔 원시형 자료 복사
+//원시형 자료는 변수값을 복사하는 식으로 완전복사(deep copy가능) 불변성 유지됨
+let num = 0;
+let newNum = num;
+newNum++;
+console.log(newNum);
+console.log(num);
