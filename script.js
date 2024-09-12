@@ -13,3 +13,18 @@ const newArr = [...originArr];
 //해당 참조값이 가리키는 메모리힙상의 값을 고쳐도 원본은 훼손이 일어나지 않음 (불변성 유지됨)
 newArr[0] = 0;
 console.log(newArr);
+
+//작년 수강생 정보
+const first_year = {
+  name: "Michael",
+  age: 20,
+  isFemale: false,
+};
+
+//아래와 같이 객체도 기존 배열과 같은 형태로 전개연산자를 통해 복사가 가능
+const second_year = { ...first_year };
+second_year.age = 21;
+
+//원본 훼손이 일어나지 않음
+console.log(first_year);
+console.log(second_year);
